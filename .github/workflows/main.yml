@@ -21,15 +21,21 @@ jobs:
           mkdir -p ~/.ssh
           ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
 
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
       - name: Deploy dist folder to VPS
         run: |
-          rsync -avz --delete ./dist/ ${{ secrets.SSH_USER }}@${{ secrets.HOST }}:/home/siter/web/ano-otvet.ru/public_shtml/
+          rsync -avz --delete -e "ssh -i ~/.ssh/id_rsa" ./dist/ ${{ secrets.SSH_USER }}@${{ secrets.HOST }}:/home/siter/web/ano-otvet.ru/public_shtml/
 
       - name: Restart Remote Service
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
-          password: ${{ secrets.SSH_PASSWORD }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             systemctl restart nginx
