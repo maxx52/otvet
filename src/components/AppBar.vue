@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar :elevation="8" class="bg_opacity fixed">
+  <v-toolbar :elevation="8" class="bg_opacity position-fixed">
     <v-spacer></v-spacer>
     <v-app-bar-nav-icon @click="drawer = !drawer" class="hidden-md-and-up text-white"></v-app-bar-nav-icon>
     <router-link to="/" class="text-decoration-none">
@@ -8,12 +8,16 @@
     </router-link>
     <div v-for="button of buttons" :key="button.id" class="hidden-sm-and-down">
       <a :href="button.link" v-smooth-scroll="{ duration: 1000 }">
-        <v-btn class="ml-2" variant="text">
+        <v-btn class="ml-2 btn_appbar" variant="text" v-ripple="{class: 'ripple-color'}">
           <span class="font-weight-medium text-white">{{ button.title }}</span>
         </v-btn>
       </a>
     </div>
-    <v-icon class="mr-2" small color="white">mdi-vk</v-icon>
+    <router-link href="https://vk.com" to="">
+      <v-btn>
+        <v-icon size="30" class="mr-2 vk-icon">mdi-vk</v-icon>
+      </v-btn>
+    </router-link>
     <v-btn-toggle ></v-btn-toggle>
     <v-spacer></v-spacer>
   </v-toolbar>
@@ -37,10 +41,11 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import "src/settings"
 .bg_opacity
-  background: rgba(42, 48, 111, .5)
-
-.fixed
-  position: fixed
+  background-color: rgba($warning, .5)
   z-index: 1000
+
+.vk-icon
+  color: white
 </style>
