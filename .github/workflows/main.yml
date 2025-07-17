@@ -12,18 +12,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'  # Версия Node.js
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build with npm
-        run: npm run build
-
       - name: Deploy dist folder to VPS
         uses: appleboy/scp-action@master
         with:
@@ -31,7 +19,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
           source: dist/
-          target: /home/siter/web/ano-otvet.ru/public_shtml
+          target: /home/siter/web/ano-otvet.ru/public_shtml/, /home/siter/web/ano-otvet.ru/public_html/
 
       - name: Restart Remote Service
         uses: appleboy/ssh-action@master
