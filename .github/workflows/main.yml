@@ -18,7 +18,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
-          source: dist/
+          source: dist/*
           target: /home/siter/web/ano-otvet.ru/public_shtml/
 
       - name: Restart Remote Service
