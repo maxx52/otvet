@@ -1,20 +1,43 @@
-name: Deploy
+name: Build and Publish
 
 on:
   push:
     branches:
-      - master
+      - master  # имя основной ветки
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      # Setup key
-      - run: set -eu
-      - run: mkdir "$HOME/.ssh"
-      - run: echo "${{ secrets.key }}" > "$HOME/.ssh/key"
-      - run: chmod 600 "$HOME/.ssh/HOST"
-      # Deploy
-      - run: cd dist && rsync -e "ssh -p 20022 -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete . siter@81.177.142.240:/home/siter/web/ano-otvet.ru/public_shtml
-      - run: cd dist && rsync -e "ssh -p 20022 -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete . siter@81.177.142.240:/home/siter/web/ano-otvet.ru/public_html
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'  # Версия Node.js
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build with npm
+        run: npm run build
+
+      - name: Deploy dist folder to VPS
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          source: dist/
+          target: /home/siter/web/ano-otvet.ru/public_shtml
+
+      - name: Restart Remote Service
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username:  ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          script: |
+            systemctl restart nginx
