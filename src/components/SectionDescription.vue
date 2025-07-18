@@ -1,5 +1,5 @@
 <template>
-  <section id="description" class="section-description">
+  <section id="description" class="section-description section-background">
     <v-container>
       <v-row>
         <v-col md="6">
@@ -30,7 +30,6 @@ export default {
 
 <style scoped lang="sass">
 .section-description
-  background-color: rgb(249, 249, 249)
   .stub
     margin: auto
   p
