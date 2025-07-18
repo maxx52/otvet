@@ -43,7 +43,7 @@ export default {
 <style lang="sass" scoped>
 @import "src/settings"
 .bg_opacity
-  background-color: rgba($warning, .5)
+  background-color: rgba(darken($warning, .5), .7)
   z-index: 1000
 
 .vk-icon
