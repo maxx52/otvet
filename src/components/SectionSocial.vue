@@ -10,7 +10,7 @@
           <v-col>
             <v-list-item>
               <a href="https://vk.com">
-                <v-icon size="50" class="warning-color text-center justify-center">mdi-vk</v-icon>
+                <v-icon size="50" class="accent text-center justify-center">mdi-vk</v-icon>
               </a>
             </v-list-item>
           </v-col>
