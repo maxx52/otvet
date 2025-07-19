@@ -5,6 +5,7 @@
   <SectionJoy />
   <SectionSupport />
   <SectionReports />
+  <SectionSocial />
 </template>
 
 <script>
@@ -17,11 +18,13 @@ import SectionDescription from "@/components/SectionDescription.vue";
 import SectionJoy from "@/components/SectionJoy.vue";
 import SectionSupport from "@/components/SectionSupport.vue";
 import SectionReports from "@/components/SectionReports.vue";
+import SectionSocial from "@/components/SectionSocial.vue";
 
 export default defineComponent({
   name: 'HomeView',
 
   components: {
+    SectionSocial,
     SectionReports,
     SectionSupport,
     SectionJoy,
