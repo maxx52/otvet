@@ -1,47 +1,19 @@
 <template>
-  <footer class="warning">
+  <footer class="warning-bg">
     <v-container>
       <v-row>
         <v-col md="6">
-          <p>&copy; 2025. 0+</p>
-          <p>АНО Ответ</p>
-          <v-list>
-            <v-layout-item>
-              <span>ИНН</span>
-            </v-layout-item>
-            <v-layout-item>
-              <span>КПП</span>
-            </v-layout-item>
-            <v-layout-item>
-              <span>ОГРН</span>
-            </v-layout-item>
-            <v-layout-item>
-              <span>БИК</span>
-            </v-layout-item>
-            <v-layout-item>
-              <span>КС</span>
-            </v-layout-item>
-            <v-layout-item>
-              <span>Р/С</span>
-            </v-layout-item>
-            <v-layout-item>
-              <span>Банк</span>
-            </v-layout-item>
+          <v-list class="warning-bg text-white pa-0 mt-5" v-for="req in requisites">
+            <v-list-item min-height="0">
+              <span>{{ req.text }}</span>
+            </v-list-item>
           </v-list>
         </v-col>
         <v-col md="6">
-          <v-list>
-            <v-list-item>
-              <a href="/">Подопечным</a>
+          <v-list class="warning-bg text-white pa-0 mt-5" v-for="m in menu">
+            <v-list-item class="pa-0" min-height="0">
+              <a :href="m.link" class="text-white text-decoration-none pa-0">{{ m.text }}</a>
             </v-list-item>
-            <v-list-item>
-              <a href="/">Политика конфиденциальности</a>
-            </v-list-item>
-            <v-list-item></v-list-item>
-            <v-list-item></v-list-item>
-            <v-list-item></v-list-item>
-            <v-list-item></v-list-item>
-            <v-list-item></v-list-item>
           </v-list>
         </v-col>
       </v-row>
@@ -51,7 +23,26 @@
 
 <script>
 export default {
-  name: 'Footer'
+  name: 'Footer',
+  data: () => ({
+    requisites: [
+      {text: '&copy; 2025. 0+'},
+      {text: 'АНО Ответ'},
+      {text: 'ИНН'},
+      {text: 'КПП'},
+      {text: 'ОГРН'},
+      {text: 'БИК'},
+      {text: 'КС'},
+      {text: 'Р/С'},
+      {text: 'Банк'},
+    ],
+    menu: [
+      {text: 'Подопечным', link: '/'},
+      {text: 'Политика конфиденциальности', link: '/'},
+      {text: 'Оферта о благотворительном пожертвовании', link: '/'},
+      {text: 'СМС-пожертвование', link: '/'},
+    ]
+  })
 }
 </script>
 
