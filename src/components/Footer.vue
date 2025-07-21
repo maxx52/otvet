@@ -12,7 +12,7 @@
         <v-col md="6">
           <v-list class="warning-bg text-white pa-0 mt-5" v-for="m in menu">
             <v-list-item class="pa-0" min-height="0">
-              <a :href="m.link" class="text-white text-decoration-none pa-0">{{ m.text }}</a>
+              <router-link :to="m.link" class="text-white text-decoration-none pa-0">{{ m.text }}</router-link>
             </v-list-item>
           </v-list>
         </v-col>
