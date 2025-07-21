@@ -3,8 +3,8 @@
     <v-container>
       <v-row>
         <v-col md="6">
-          <v-list class="warning-bg text-white pa-0 mt-5" v-for="req in requisites">
-            <v-list-item min-height="0">
+          <v-list class="warning-bg text-white pa-0 mt-5 mb-5" v-for="req in requisites">
+            <v-list-item class="pa-0" min-height="0">
               <span>{{ req.text }}</span>
             </v-list-item>
           </v-list>
@@ -38,7 +38,7 @@ export default {
     ],
     menu: [
       {text: 'Подопечным', link: '/'},
-      {text: 'Политика конфиденциальности', link: '/'},
+      {text: 'Политика конфиденциальности', link: '/policy'},
       {text: 'Оферта о благотворительном пожертвовании', link: '/'},
       {text: 'СМС-пожертвование', link: '/'},
     ]
