@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import PolicyView from "@/views/PolicyView.vue";
+import OfferView from "@/views/OfferView.vue";
 
 const routes = [
   {
@@ -11,10 +12,12 @@ const routes = [
   {
     path: '/policy',
     name: 'policy',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: PolicyView
+  },
+  {
+    path: '/offer',
+    name: 'offer',
+    component: OfferView
   }
 ]
 
