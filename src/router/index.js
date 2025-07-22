@@ -1,7 +1,7 @@
-import {createMemoryHistory, createRouter, createWebHashHistory, createWebHistory} from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
-import PolicyView from "@/views/PolicyView.vue";
-import OfferView from "@/views/OfferView.vue";
+import PolicyView from '@/views/PolicyView.vue';
+import OfferView from '@/views/OfferView.vue';
 
 const routes = [
   {
@@ -19,8 +19,13 @@ const routes = [
     name: 'offer',
     component: OfferView
   }
-]
+];
 
-const router = createRouter({ history: createWebHistory(), routes });
+const baseUrl = import.meta.env ? import.meta.env.BASE_URL : '/';
 
-export default router
+const router = createRouter({
+  history: createWebHistory(baseUrl),
+  routes
+});
+
+export default router;
