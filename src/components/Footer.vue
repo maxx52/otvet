@@ -26,7 +26,7 @@ export default {
   name: 'Footer',
   data: () => ({
     requisites: [
-      {text: '&copy; 2025. 0+'},
+      {text: '\u00A9 2025. 0+'},
       {text: 'АНО Ответ'},
       {text: 'ИНН 4214041570'},
       {text: 'КПП 421401001'},
