@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import {createRouter, createWebHashHistory} from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import PolicyView from "@/views/PolicyView.vue";
 import OfferView from "@/views/OfferView.vue";
@@ -21,6 +21,6 @@ const routes = [
   }
 ]
 
-const router = createRouter({ history: createWebHistory(), routes });
+const router = createRouter({ history: createWebHashHistory(), routes });
 
 export default router
