@@ -1,5 +1,4 @@
 <template>
-  <AppBar />
   <v-container>
     <v-row>
       <v-col cols="10" offset-md="1">
@@ -137,17 +136,10 @@
       </v-col>
     </v-row>
   </v-container>
-  <Footer />
 </template>
 
 <script>
-import AppBar from "@/components/AppBar.vue"
-import Footer from "@/components/Footer.vue";
 
-export default {
-  name: "Policy",
-  components: {Footer, AppBar},
-}
 </script>
 
 <style scoped lang="sass">

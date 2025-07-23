@@ -58,12 +58,7 @@
 </template>
 
 <script>
-import {defineComponent} from "vue";
-import AppBar from "@/components/AppBar.vue";
 
-export default defineComponent({
-  components: {AppBar}
-})
 </script>
 
 <style scoped lang="sass">
