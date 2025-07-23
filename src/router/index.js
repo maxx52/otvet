@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import {createRouter, createWebHashHistory, createWebHistory} from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import PolicyView from '@/views/PolicyView.vue';
 import OfferView from '@/views/OfferView.vue';
@@ -21,10 +21,8 @@ const routes = [
   }
 ];
 
-const baseUrl = import.meta.env ? import.meta.env.BASE_URL : '/';
-
 const router = createRouter({
-  history: createWebHistory(baseUrl),
+  history: createWebHashHistory(process.env.BASE_URL),
   routes
 });
 
