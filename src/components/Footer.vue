@@ -15,6 +15,7 @@
               <router-link :to="m.link" class="text-white text-decoration-none pa-0">{{ m.text }}</router-link>
             </v-list-item>
           </v-list>
+          <v-btn class="text-white mt-5 support_btn">Поддержать</v-btn>
         </v-col>
       </v-row>
     </v-container>
