@@ -6,7 +6,7 @@
 
 <script>
 import { defineComponent } from 'vue';
-import Offer from '@/components/offer/Offer.vue';
+import Offer from '@/components/pages/Offer.vue';
 import AppBar from "@/components/AppBar.vue";
 import Footer from "@/components/Footer.vue";
 
