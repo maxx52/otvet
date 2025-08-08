@@ -13,11 +13,11 @@
         </v-btn>
       </a>
     </div>
-    <router-link href="https://vk.com" to="">
+    <a href="https://vk.com/anootvet.vopros" target="_blank">
       <v-btn>
         <v-icon size="30" class="mr-2 vk-icon">mdi-vk</v-icon>
       </v-btn>
-    </router-link>
+    </a>
     <v-btn-toggle ></v-btn-toggle>
     <v-spacer></v-spacer>
   </v-toolbar>
@@ -32,8 +32,8 @@ export default {
     drawer: false,
     buttons: [
       { title: 'Как мы помогаем', link: '#help', id: 1 },
-      { title: 'Документы', link: '#docs', id: 2 },
-      { title: 'Отчёты', link: '#reports', id: 3 },
+      { title: 'Документы', link: 'docs', id: 2 },
+      { title: 'Отчёты', link: 'reports', id: 3 },
       { title: 'Подопечные', link: '#wards', id: 4 }
     ]
   })
