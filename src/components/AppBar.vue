@@ -23,7 +23,13 @@
     <v-spacer></v-spacer>
   </v-toolbar>
   <v-navigation-drawer v-model="drawer" temporary>
-
+    <div v-for="button of buttons" :key="button.id">
+      <router-link :to="button.link" v-smooth-scroll="{ duration: 1000 }">
+        <v-btn class="ml-2 btn_appbar" variant="text" v-ripple="{class: 'ripple-color'}">
+          <span class="font-weight-medium warning">{{ button.title }}</span>
+        </v-btn>
+      </router-link>
+    </div>
   </v-navigation-drawer>
 </template>
 
@@ -32,10 +38,11 @@ export default {
   data: () => ({
     drawer: false,
     buttons: [
+      { title: 'Главная', link: '/', id: 0 },
       { title: 'Как мы помогаем', link: 'help', id: 1 },
       { title: 'Документы', link: 'docs', id: 2 },
       { title: 'Отчёты', link: 'reports', id: 3 },
-      { title: 'Подопечные', link: '#wards', id: 4 }
+      { title: 'Подопечные', link: 'wards', id: 4 }
     ]
   })
 }
