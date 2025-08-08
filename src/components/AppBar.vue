@@ -2,6 +2,7 @@
   <v-toolbar :elevation="8" class="bg_opacity position-fixed">
     <v-spacer></v-spacer>
     <v-app-bar-nav-icon @click="drawer = !drawer" class="hidden-md-and-up text-white"></v-app-bar-nav-icon>
+    <v-img src="../assets/logo_only.png" width="50" height="50" class="flex-0-0 mr-3"></v-img>
     <router-link to="/" class="text-decoration-none">
       <v-app-bar-title
           class="text-white text-decoration-none font-weight-light text-h4 text-sm-h4 text-md-h4">АНО Ответ</v-app-bar-title>
@@ -31,7 +32,7 @@ export default {
   data: () => ({
     drawer: false,
     buttons: [
-      { title: 'Как мы помогаем', link: '#help', id: 1 },
+      { title: 'Как мы помогаем', link: 'help', id: 1 },
       { title: 'Документы', link: 'docs', id: 2 },
       { title: 'Отчёты', link: 'reports', id: 3 },
       { title: 'Подопечные', link: '#wards', id: 4 }

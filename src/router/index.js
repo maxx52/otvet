@@ -4,6 +4,7 @@ import PolicyView from '@/views/PolicyView.vue';
 import OfferView from '@/views/OfferView.vue';
 import Reports from "@/components/pages/Reports.vue";
 import Docs from '@/components/pages/Docs.vue';
+import Help from '@/components/pages/Help.vue';
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     path: '/docs',
     name: 'docs',
     component: Docs
+  },
+  {
+    path: '/help',
+    name: 'help',
+    component: Help
   }
 ];
 
