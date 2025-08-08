@@ -5,7 +5,7 @@
     <v-img src="../assets/logo_only.png" width="50" height="50" class="flex-0-0 mr-3"></v-img>
     <router-link to="/" class="text-decoration-none">
       <v-app-bar-title
-          class="text-white text-decoration-none font-weight-light text-h4 text-sm-h4 text-md-h4">АНО Ответ</v-app-bar-title>
+          class="text-white text-decoration-none font-weight-light text-h5 text-sm-h4 text-sm-h4 text-md-h4">АНО Ответ</v-app-bar-title>
     </router-link>
     <div v-for="button of buttons" :key="button.id" class="hidden-sm-and-down">
       <router-link :to="button.link" v-smooth-scroll="{ duration: 1000 }">
@@ -23,7 +23,7 @@
     <v-spacer></v-spacer>
   </v-toolbar>
   <v-navigation-drawer v-model="drawer" temporary>
-    <div v-for="button of buttons" :key="button.id">
+    <div v-for="button of buttons" :key="button.id" class="mt-5">
       <router-link :to="button.link" v-smooth-scroll="{ duration: 1000 }">
         <v-btn class="ml-2 btn_appbar" variant="text" v-ripple="{class: 'ripple-color'}">
           <span class="font-weight-medium warning">{{ button.title }}</span>

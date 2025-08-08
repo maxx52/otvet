@@ -2,7 +2,7 @@
   <section class="section mt-10" id="social">
     <v-container>
       <section>
-        <h2 class="text-center text-h2 warning font-weight-bold">Мы в социальных сетях</h2>
+        <h2 class="text-center text-h4 text-sm-h2 warning font-weight-bold">Мы в социальных сетях</h2>
       </section>
       <v-row>
         <v-list lines="one"

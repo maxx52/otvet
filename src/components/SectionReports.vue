@@ -2,8 +2,8 @@
   <section id="reports" class="section-background">
     <v-container>
       <section class="mt-10 mb-10">
-        <h2 class="text-center text-h2 mt-8 mb-5 font-weight-bold warning">Отчеты и документы</h2>
-        <p class="text-center text-h4">Мы ответственно следим за документацией, и готовы показать всю отчетность</p>
+        <h2 class="text-center text-h4 text-sm-h3 mt-8 mb-5 font-weight-bold warning">Отчеты и документы</h2>
+        <p class="text-center text-h5 text-sm-h4">Мы ответственно следим за документацией, и готовы показать всю отчетность</p>
       </section>
       <v-row class="mt-10 mb-10">
         <v-col md="4" v-for="item of items" :key="item.id">

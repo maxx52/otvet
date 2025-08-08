@@ -2,20 +2,20 @@
   <footer class="warning-bg">
     <v-container>
       <v-row>
-        <v-col md="6">
+        <v-col md="6" cols="12">
           <v-list class="warning-bg text-white pa-0 mt-5 mb-5" v-for="req in requisites">
             <v-list-item class="pa-0" min-height="0">
               <span>{{ req.text }}</span>
             </v-list-item>
           </v-list>
         </v-col>
-        <v-col md="6">
+        <v-col md="6" cols="12">
           <v-list class="warning-bg text-white pa-0 mt-5" v-for="m in menu">
             <v-list-item class="pa-0" min-height="0">
               <router-link :to="m.link" class="text-white text-decoration-none pa-0">{{ m.text }}</router-link>
             </v-list-item>
           </v-list>
-          <v-btn class="text-white mt-5 support_btn">Поддержать</v-btn>
+          <v-btn class="text-white mt-5 support_btn" href="https://qr.nspk.ru/AS2A005RR68CQSD39JVB59RUD13DLHI5?type=01&bank=100000000111&crc=5547">Поддержать</v-btn>
         </v-col>
       </v-row>
     </v-container>
