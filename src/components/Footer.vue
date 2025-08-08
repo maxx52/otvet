@@ -1,5 +1,5 @@
 <template>
-  <footer class="warning-bg">
+  <footer class="warning-bg mb-0 mt-auto">
     <v-container>
       <v-row>
         <v-col md="6" cols="12">

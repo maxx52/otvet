@@ -42,7 +42,8 @@ export default {
       { title: 'Как мы помогаем', link: 'help', id: 1 },
       { title: 'Документы', link: 'docs', id: 2 },
       { title: 'Отчёты', link: 'reports', id: 3 },
-      { title: 'Подопечные', link: 'wards', id: 4 }
+      { title: 'Подопечные', link: 'wards', id: 4 },
+      { title: 'Новости', link: 'news', id: 5 },
     ]
   })
 }
