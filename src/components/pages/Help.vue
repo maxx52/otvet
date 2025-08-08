@@ -16,17 +16,20 @@
   </section>
   <section class="mt-12 mb-5" id="help_description">
     <v-container>
-      <v-row>
-        <v-col md="8" offset="2">
+      <v-row no-gutters>
+        <v-col md="12">
           <h2 class="text-center text-h5">Наш фонд оказывает помощь в приобретении инвалидных колясок, электроприставок и комплектующих к инвалидным коляскам.</h2>
         </v-col>
-        <v-col>
-          <v-card>
-            <v-icon>mdi-account-check</v-icon>
-            <v-card-text>
-
-            </v-card-text>
-          </v-card>
+        <v-col cols="3" v-for="(card, i) of cards" :key="i" class="d-flex mt-5">
+          <v-col md="7">
+            <v-card width="150" height="220" elevation="8">
+              <v-icon class=" ml-auto mr-auto d-block accent" size="100">{{card.icon}}</v-icon>
+              <v-card-text class="text-center text-subtitle-1">{{card.text}}</v-card-text>
+            </v-card>
+          </v-col>
+          <v-col md="3">
+            <v-icon class="mt-auto mb-auto warning justify-end" size="80">{{card.icon_arr}}</v-icon>
+          </v-col>
         </v-col>
       </v-row>
     </v-container>
@@ -41,6 +44,14 @@ import Footer from "@/components/Footer.vue";
 export default {
   name: 'Help',
   components: {Footer, AppBar},
+  data: () => ({
+    cards: [
+      {icon: 'mdi-account-check', text: 'Заполните анкету', icon_arr: 'mdi-ray-start-arrow'},
+      {icon: 'mdi-text-box-plus', text: 'Подпишите документы', icon_arr: 'mdi-ray-start-arrow'},
+      {icon: 'mdi-cash-multiple', text: 'Мы открываем сбор и собираем нужную сумму', icon_arr: 'mdi-ray-start-arrow'},
+      {icon: 'mdi-truck-delivery-outline', text: 'Оплачиваем счет и привозим к вам домой', icon_arr: ''},
+    ]
+  })
 }
 </script>
 
