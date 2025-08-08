@@ -18,7 +18,7 @@
     <v-container>
       <v-row no-gutters>
         <v-col md="12">
-          <h2 class="text-center text-h5">Наш фонд оказывает помощь в приобретении инвалидных колясок, электроприставок и комплектующих к инвалидным коляскам.</h2>
+          <h2 class="text-center text-h4 font-weight-bold">Как получить помощь:</h2>
         </v-col>
         <v-col cols="3" v-for="(card, i) of cards" :key="i" class="d-flex mt-5">
           <v-col md="7">

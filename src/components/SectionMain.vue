@@ -24,7 +24,7 @@ export default {
 @import "src/settings"
 .main-section
   height: 100vh
-  background-image: url("../assets/main.webp")
+  //background-image: url("../assets/main.webp")
   background-repeat: no-repeat
   background-size: cover
 </style>
