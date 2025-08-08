@@ -7,11 +7,11 @@
           class="text-white text-decoration-none font-weight-light text-h4 text-sm-h4 text-md-h4">АНО Ответ</v-app-bar-title>
     </router-link>
     <div v-for="button of buttons" :key="button.id" class="hidden-sm-and-down">
-      <a :href="button.link" v-smooth-scroll="{ duration: 1000 }">
+      <router-link :to="button.link" v-smooth-scroll="{ duration: 1000 }">
         <v-btn class="ml-2 btn_appbar" variant="text" v-ripple="{class: 'ripple-color'}">
           <span class="font-weight-medium text-white">{{ button.title }}</span>
         </v-btn>
-      </a>
+      </router-link>
     </div>
     <a href="https://vk.com/anootvet.vopros" target="_blank">
       <v-btn>
