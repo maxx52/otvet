@@ -6,7 +6,8 @@
             <p class="text-center mb-5 mt-5 mt-sm-0 font-weight-bold text-h4 accent">Есть вопрос? Есть ответ!</p>
             <p class="text-center mt-5 text-h5">Фонд помогает конкретным людям, у которых есть
               свои радости, истории и характер</p>
-            <v-btn class="align-center text-white ml-auto mr-auto d-block mt-5 support_btn" href="https://qr.nspk.ru/AS2A005RR68CQSD39JVB59RUD13DLHI5?type=01&bank=100000000111&crc=5547">Поддержать</v-btn>
+            <v-btn class="align-center text-white ml-auto mr-auto d-block mt-5 support_btn">
+              <a href="https://qr.nspk.ru/AS2A005RR68CQSD39JVB59RUD13DLHI5?type=01&bank=100000000111&crc=5547" class="text-decoration-none text-white">Поддержать</a></v-btn>
           </v-col>
         </v-row>
       </v-container>
