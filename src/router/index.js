@@ -4,7 +4,7 @@ import PolicyView from '@/views/PolicyView.vue';
 import OfferView from '@/views/OfferView.vue';
 import Reports from "@/components/pages/Reports.vue";
 import Docs from '@/components/pages/Docs.vue';
-import Help from '@/components/pages/Help.vue';
+import Help from '@/components/pages/help/Help.vue';
 import News from "@/components/pages/News.vue";
 import Wards from "@/components/pages/Wards.vue";
 
