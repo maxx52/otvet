@@ -23,34 +23,76 @@
         <v-col md="12">
           <v-form ref="form" class="mt-5" v-model="form" @submit.prevent="onSubmit">
             <v-text-field
+                ref="name"
                 label="Ф.И.О."
                 :rules="[required]"
                 :readonly="loading"
                 clearable
-                maxlenght="30"
+                maxlength="30"
                 counter
             ></v-text-field>
             <p>Ваш статус для подопечного:</p>
-            <v-radio-group :rules="[required]" :readonly="loading">
-              <v-radio label="Я сам" color="primary"></v-radio>
-              <v-radio label="Родитель" color="primary"></v-radio>
-              <v-radio label="Опекун" color="primary"></v-radio>
-              <v-radio label="Родственник" color="primary"></v-radio>
-              <v-radio label="Другой вариант" color="primary"></v-radio>
+            <v-radio-group :rules="[required]" :readonly="loading" ref="status">
+              <v-radio label="Я сам" color="primary" value="self"></v-radio>
+              <v-radio label="Родитель" color="primary" value="parent"></v-radio>
+              <v-radio label="Опекун" color="primary" value="guardian"></v-radio>
+              <v-radio label="Родственник" color="primary" value="relative"></v-radio>
+              <v-radio label="Другой вариант" color="primary" value="another"></v-radio>
             </v-radio-group>
             <v-text-field
+                ref="ward_name"
                 label="ФИО подопечного:"
                 :rules="[required]"
                 :readonly="loading"
                 clearable
-                maxlenght="30"
+                maxlength="30"
                 counter
             ></v-text-field>
-            <v-text-field label="Дата рождения подопечного:" :rules="[required]" :readonly="loading" clearable maxlenght="10" counter hint="дд.мм.гггг"></v-text-field>
-            <v-text-field label="E-mail:" type="email" :rules="[required]" hint="example@email.com" maxlenght="30" counter></v-text-field>
-            <v-text-field label="Ваш номер телефона:" :rules="[required]" :readonly="loading" clearable maxlenght="12" counter hint="В формате: +79991234567"></v-text-field>
-            <v-text-field label="Ваш город:" :rules="[required]" :readonly="loading"></v-text-field>
-            <v-textarea label="Какая помощь Вам необходима?" hint="Опишите свою проблему в свободной форме" minlenght="5" maxlenght="1000" counter :rules="[required]" :readonly="loading"></v-textarea>
+            <v-text-field
+                ref="ward_birthdate"
+                label="Дата рождения подопечного:"
+                :rules="[required]"
+                :readonly="loading"
+                clearable
+                maxlength="10"
+                counter
+                hint="дд.мм.гггг"
+            ></v-text-field>
+            <v-text-field
+                ref="email"
+                label="E-mail:"
+                type="email"
+                :rules="[required]"
+                hint="example@email.com"
+                maxlength="30"
+                counter
+            ></v-text-field>
+            <v-text-field
+                ref="phone"
+                label="Ваш номер телефона:"
+                :rules="[required]"
+                :readonly="loading"
+                clearable
+                maxlength="12"
+                counter
+                hint="В формате: +79991234567"
+            ></v-text-field>
+            <v-text-field
+                ref="city"
+                label="Ваш город:"
+                :rules="[required]"
+                :readonly="loading"
+            ></v-text-field>
+            <v-textarea
+                ref="help_needed"
+                label="Какая помощь Вам необходима?"
+                hint="Опишите свою проблему в свободной форме"
+                minlength="5"
+                maxlength="1000"
+                counter
+                :rules="[required]"
+                :readonly="loading"
+            ></v-textarea>
             <v-btn @click="onSubmit" type="submit" class="support_btn text-white">Отправить</v-btn>
           </v-form>
         </v-col>
@@ -61,8 +103,9 @@
 </template>
 
 <script>
-import AppBar from "@/components/AppBar.vue";
+import axios from 'axios';
 import Footer from "@/components/Footer.vue";
+import AppBar from "@/components/AppBar.vue";
 
 export default {
   name: 'Help',
@@ -70,20 +113,50 @@ export default {
   data: () => ({
     form: false,
     loading: false,
+    csrfToken: '', // CSRF-токен
   }),
   methods: {
     onSubmit () {
       if (!this.form) return
       this.loading = true
-      setTimeout(() => (this.loading = false), 2000)
+
+      // Собираем данные из формы
+      const formData = new FormData();
+      formData.append('name', this.$refs.form.$refs.name.value);
+      formData.append('status', this.$refs.form.$refs.status.value);
+      formData.append('ward_name', this.$refs.form.$refs.ward_name.value);
+      formData.append('ward_birthdate', this.$refs.form.$refs.ward_birthdate.value);
+      formData.append('email', this.$refs.form.$refs.email.value);
+      formData.append('phone', this.$refs.form.$refs.phone.value);
+      formData.append('city', this.$refs.form.$refs.city.value);
+      formData.append('help_needed', this.$refs.form.$refs.help_needed.value);
+      formData.append('csrf_token', this.csrfToken); // Добавляем CSRF-токен
+
+      // Отправляем данные на сервер с помощью axios
+      axios.post('/mail.php', formData)
+          .then(response => {
+            alert(response.data);
+            this.loading = false;
+            this.$refs.form.reset();
+          })
+          .catch(error => {
+            console.error('Ошибка при отправке формы:', error);
+            this.loading = false;
+          });
     },
     required (v) {
       return !!v || 'Это обязательно необходимо заполнить!'
     },
+  },
+  created() {
+    // Получаем CSRF-токен с сервера
+    axios.get('/csrf.php')
+        .then(response => {
+          this.csrfToken = response.data.csrf_token;
+        })
+        .catch(error => {
+          console.error('Ошибка при получении CSRF-токена:', error);
+        });
   }
 }
 </script>
-
-<style scoped lang="sass">
-
-</style>
