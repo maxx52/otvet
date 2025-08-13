@@ -23,7 +23,8 @@
         <v-col md="12">
           <v-form ref="form" class="mt-5" v-model="form" @submit.prevent="onSubmit">
             <v-text-field
-                ref="name"
+                v-model="formData.name"
+                name="name"
                 label="Ф.И.О."
                 :rules="[required]"
                 :readonly="loading"
@@ -32,7 +33,7 @@
                 counter
             ></v-text-field>
             <p>Ваш статус для подопечного:</p>
-            <v-radio-group :rules="[required]" :readonly="loading" ref="status">
+            <v-radio-group v-model="formData.status" :rules="[required]" :readonly="loading" name="status">
               <v-radio label="Я сам" color="primary" value="self"></v-radio>
               <v-radio label="Родитель" color="primary" value="parent"></v-radio>
               <v-radio label="Опекун" color="primary" value="guardian"></v-radio>
@@ -40,7 +41,8 @@
               <v-radio label="Другой вариант" color="primary" value="another"></v-radio>
             </v-radio-group>
             <v-text-field
-                ref="ward_name"
+                v-model="formData.ward_name"
+                name="ward_name"
                 label="ФИО подопечного:"
                 :rules="[required]"
                 :readonly="loading"
@@ -49,7 +51,8 @@
                 counter
             ></v-text-field>
             <v-text-field
-                ref="ward_birthdate"
+                v-model="formData.ward_birthdate"
+                name="ward_birthdate"
                 label="Дата рождения подопечного:"
                 :rules="[required]"
                 :readonly="loading"
@@ -59,7 +62,8 @@
                 hint="дд.мм.гггг"
             ></v-text-field>
             <v-text-field
-                ref="email"
+                v-model="formData.email"
+                name="email"
                 label="E-mail:"
                 type="email"
                 :rules="[required]"
@@ -68,7 +72,8 @@
                 counter
             ></v-text-field>
             <v-text-field
-                ref="phone"
+                v-model="formData.phone"
+                name="phone"
                 label="Ваш номер телефона:"
                 :rules="[required]"
                 :readonly="loading"
@@ -78,13 +83,15 @@
                 hint="В формате: +79991234567"
             ></v-text-field>
             <v-text-field
-                ref="city"
+                v-model="formData.city"
+                name="city"
                 label="Ваш город:"
                 :rules="[required]"
                 :readonly="loading"
             ></v-text-field>
             <v-textarea
-                ref="help_needed"
+                v-model="formData.help_needed"
+                name="help_needed"
                 label="Какая помощь Вам необходима?"
                 hint="Опишите свою проблему в свободной форме"
                 minlength="5"
@@ -103,9 +110,11 @@
 </template>
 
 <script>
-import axios from 'axios';
 import Footer from "@/components/Footer.vue";
 import AppBar from "@/components/AppBar.vue";
+import axios from 'axios';
+
+const WEB3FORMS_ACCESS_KEY = "8079a59c-f4b8-49e2-b598-101913465c25";
 
 export default {
   name: 'Help',
@@ -113,31 +122,48 @@ export default {
   data: () => ({
     form: false,
     loading: false,
-    csrfToken: '', // CSRF-токен
+    formData: {
+      name: '',
+      status: '',
+      ward_name: '',
+      ward_birthdate: '',
+      email: '',
+      phone: '',
+      city: '',
+      help_needed: '',
+    },
+    csrfToken: ''
   }),
   methods: {
     onSubmit () {
       if (!this.form) return
       this.loading = true
 
-      // Собираем данные из формы
       const formData = new FormData();
-      formData.append('name', this.$refs.form.$refs.name.value);
-      formData.append('status', this.$refs.form.$refs.status.value);
-      formData.append('ward_name', this.$refs.form.$refs.ward_name.value);
-      formData.append('ward_birthdate', this.$refs.form.$refs.ward_birthdate.value);
-      formData.append('email', this.$refs.form.$refs.email.value);
-      formData.append('phone', this.$refs.form.$refs.phone.value);
-      formData.append('city', this.$refs.form.$refs.city.value);
-      formData.append('help_needed', this.$refs.form.$refs.help_needed.value);
-      formData.append('csrf_token', this.csrfToken); // Добавляем CSRF-токен
+      formData.append('name', this.formData.name);
+      formData.append('status', this.formData.status);
+      formData.append('ward_name', this.formData.ward_name);
+      formData.append('ward_birthdate', this.formData.ward_birthdate);
+      formData.append('email', this.formData.email);
+      formData.append('phone', this.formData.phone);
+      formData.append('city', this.formData.city);
+      formData.append('help_needed', this.formData.help_needed);
+      formData.append('csrf_token', this.csrfToken);
 
-      // Отправляем данные на сервер с помощью axios
       axios.post('/mail.php', formData)
           .then(response => {
             alert(response.data);
             this.loading = false;
-            this.$refs.form.reset();
+            this.formData = {
+              name: '',
+              status: '',
+              ward_name: '',
+              ward_birthdate: '',
+              email: '',
+              phone: '',
+              city: '',
+              help_needed: '',
+            };
           })
           .catch(error => {
             console.error('Ошибка при отправке формы:', error);
@@ -149,7 +175,6 @@ export default {
     },
   },
   created() {
-    // Получаем CSRF-токен с сервера
     axios.get('/csrf.php')
         .then(response => {
           this.csrfToken = response.data.csrf_token;
