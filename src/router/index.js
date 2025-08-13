@@ -8,48 +8,39 @@ import Help from '@/components/pages/help/Help.vue';
 import News from "@/components/pages/News.vue";
 import Wards from "@/components/pages/Wards.vue";
 
-const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/policy',
-    name: 'policy',
-    component: PolicyView
-  },
-  {
-    path: '/offer',
-    name: 'offer',
-    component: OfferView
-  },
-  {
-    path: '/reports',
-    name: 'reports',
-    component: Reports
-  },
-  {
-    path: '/docs',
-    name: 'docs',
-    component: Docs
-  },
-  {
-    path: '/help',
-    name: 'help',
-    component: Help
-  },
-  {
-    path: '/news',
-    name: 'news',
-    component: News
-  },
-  {
-    path: '/wards',
-    name: 'wards',
-    component: Wards
-  }
-];
+const routes = [{
+  path: '/',
+  name: 'home',
+  component: HomeView
+}, {
+  path: '/policy',
+  name: 'policy',
+  component: PolicyView
+}, {
+  path: '/offer',
+  name: 'offer',
+  component: OfferView
+}, {
+  path: '/reports',
+  name: 'reports',
+  component: Reports
+}, {
+  path: '/docs',
+  name: 'docs',
+  component: Docs
+}, {
+  path: '/help',
+  name: 'help',
+  component: Help
+}, {
+  path: '/news',
+  name: 'news',
+  component: News
+}, {
+  path: '/wards',
+  name: 'wards',
+  component: Wards
+}];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),

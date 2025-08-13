@@ -114,8 +114,6 @@ import Footer from "@/components/Footer.vue";
 import AppBar from "@/components/AppBar.vue";
 import axios from 'axios';
 
-const WEB3FORMS_ACCESS_KEY = "8079a59c-f4b8-49e2-b598-101913465c25";
-
 export default {
   name: 'Help',
   components: {Footer, AppBar},
@@ -132,13 +130,14 @@ export default {
       city: '',
       help_needed: '',
     },
-    csrfToken: ''
+    csrfToken: '', // CSRF-токен
   }),
   methods: {
     onSubmit () {
       if (!this.form) return
       this.loading = true
 
+      // Собираем данные из формы
       const formData = new FormData();
       formData.append('name', this.formData.name);
       formData.append('status', this.formData.status);
@@ -148,9 +147,10 @@ export default {
       formData.append('phone', this.formData.phone);
       formData.append('city', this.formData.city);
       formData.append('help_needed', this.formData.help_needed);
-      formData.append('csrf_token', this.csrfToken);
+      formData.append('csrf_token', this.csrfToken); // Добавляем CSRF-токен
 
-      axios.post('/mail.php', formData)
+      // Отправляем данные на сервер с помощью axios
+      axios.post('/send-email', formData)
           .then(response => {
             alert(response.data);
             this.loading = false;
@@ -175,6 +175,7 @@ export default {
     },
   },
   created() {
+    // Получаем CSRF-токен с сервера
     axios.get('/csrf.php')
         .then(response => {
           this.csrfToken = response.data.csrf_token;

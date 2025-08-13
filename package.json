@@ -9,7 +9,10 @@
   "dependencies": {
     "@mdi/font": "5.9.55",
     "axios": "^1.11.0",
+    "body-parser": "^2.2.0",
     "core-js": "^3.8.3",
+    "express": "^5.1.0",
+    "nodemailer": "^7.0.5",
     "roboto-fontface": "*",
     "v-smooth-scroll": "^2.0.0-beta.2",
     "vue": "^3.2.13",
