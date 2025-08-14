@@ -12,7 +12,7 @@
         <v-col md="6" cols="12">
           <v-list class="warning-bg text-white pa-0 mt-5" v-for="m in menu">
             <v-list-item class="pa-0" min-height="0">
-              <router-link :to="m.link" class="text-white text-decoration-none pa-0">{{ m.text }}</router-link>
+              <a :href="m.link" class="text-white text-decoration-none pa-0">{{ m.text }}</a>
             </v-list-item>
           </v-list>
           <v-btn class="text-white mt-5 support_btn" href="https://qr.nspk.ru/AS2A005RR68CQSD39JVB59RUD13DLHI5?type=01&bank=100000000111&crc=5547">Поддержать</v-btn>
@@ -40,7 +40,9 @@ export default {
     menu: [
       {text: 'Подопечным', link: '/'},
       {text: 'Политика конфиденциальности', link: '/policy'},
-      {text: 'Оферта о благотворительном пожертвовании', link: '/offer'}
+      {text: 'Оферта о благотворительном пожертвовании', link: '/offer'},
+      {text: 'Тел: 89230033874', link: 'tel://+79230033874'},
+      {text: 'E-mail: anootvet2025@gmail.com', link: 'mailto:anootvet2025@gmail.com'}
     ]
   })
 }
