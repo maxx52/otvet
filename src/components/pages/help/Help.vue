@@ -150,7 +150,7 @@ export default {
       formData.append('csrf_token', this.csrfToken); // Добавляем CSRF-токен
 
       // Отправляем данные на сервер с помощью axios
-      axios.post('/send-email', formData)
+      axios.post('/mail.php', formData)
           .then(response => {
             alert(response.data);
             this.loading = false;
