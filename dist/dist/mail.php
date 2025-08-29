@@ -34,7 +34,7 @@ if (!preg_match('/^\d{2}\.\d{2}\.\d{4}$/', $ward_birthdate)) {
 }
 
 // Отправка письма
-$to = 'admin@example.com';
+$to = 'gospelwork@yandex.ru';
 $subject = 'Запрос на помощь от ' . $name;
 $message = "Имя: $name\n";
 $message .= "Статус: $status\n";
@@ -51,6 +51,7 @@ $headers .= "Reply-To: $email\r\n";
 if (mail($to, $subject, $message, $headers)) {
     echo 'Письмо отправлено успешно!';
 } else {
+    error_log('Ошибка при отправке письма: ' . error_get_last()['message']);
     echo 'Ошибка при отправке письма.';
 }
 ?>
