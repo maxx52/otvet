@@ -33,6 +33,9 @@ if (!preg_match('/^\d{2}\.\d{2}\.\d{4}$/', $ward_birthdate)) {
     exit;
 }
 
+// Установка постоянного отправителя (вместо динамического From)
+$from_address = 'no-reply@ano-otvet.ru';
+
 // Отправка письма
 $to = 'gospelwork@yandex.ru';
 $subject = 'Запрос на помощь от ' . $name;
@@ -45,13 +48,15 @@ $message .= "Телефон: $phone\n";
 $message .= "Город: $city\n";
 $message .= "Необходимая помощь: $help_needed\n";
 
-$headers = "From: $email\r\n";
+// Определяем постоянные headers (не допускаем произвольные от пользователей)
+$headers = "From: $from_address\r\n";
 $headers .= "Reply-To: $email\r\n";
 
+// Проверка успешного отправления письма
 if (mail($to, $subject, $message, $headers)) {
     echo 'Письмо отправлено успешно!';
 } else {
-    error_log('Ошибка при отправке письма: ' . error_get_last()['message']);
+    error_log('Ошибка при отправке письма: ' . error_get_last()['message']); // Записываем в лог ошибки
     echo 'Ошибка при отправке письма.';
 }
 ?>

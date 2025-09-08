@@ -21,87 +21,88 @@
           <h2 class="text-center text-h4 font-weight-bold mb-5">Анкета для помощи:</h2>
         </v-col>
         <v-col md="12">
-          <v-form ref="form" class="mt-5" v-model="form" @submit.prevent="onSubmit">
-            <v-text-field
-                v-model="formData.name"
-                name="name"
-                label="Ф.И.О."
-                :rules="[required]"
-                :readonly="loading"
-                clearable
-                maxlength="30"
-                counter
-            ></v-text-field>
-            <p>Ваш статус для подопечного:</p>
-            <v-radio-group v-model="formData.status" :rules="[required]" :readonly="loading" name="status">
-              <v-radio label="Я сам" color="primary" value="self"></v-radio>
-              <v-radio label="Родитель" color="primary" value="parent"></v-radio>
-              <v-radio label="Опекун" color="primary" value="guardian"></v-radio>
-              <v-radio label="Родственник" color="primary" value="relative"></v-radio>
-              <v-radio label="Другой вариант" color="primary" value="another"></v-radio>
-            </v-radio-group>
-            <v-text-field
-                v-model="formData.ward_name"
-                name="ward_name"
-                label="ФИО подопечного:"
-                :rules="[required]"
-                :readonly="loading"
-                clearable
-                maxlength="30"
-                counter
-            ></v-text-field>
-            <v-text-field
-                v-model="formData.ward_birthdate"
-                name="ward_birthdate"
-                label="Дата рождения подопечного:"
-                :rules="[required]"
-                :readonly="loading"
-                clearable
-                maxlength="10"
-                counter
-                hint="дд.мм.гггг"
-            ></v-text-field>
-            <v-text-field
-                v-model="formData.email"
-                name="email"
-                label="E-mail:"
-                type="email"
-                :rules="[required]"
-                hint="example@email.com"
-                maxlength="30"
-                counter
-            ></v-text-field>
-            <v-text-field
-                v-model="formData.phone"
-                name="phone"
-                label="Ваш номер телефона:"
-                :rules="[required]"
-                :readonly="loading"
-                clearable
-                maxlength="12"
-                counter
-                hint="В формате: +79991234567"
-            ></v-text-field>
-            <v-text-field
-                v-model="formData.city"
-                name="city"
-                label="Ваш город:"
-                :rules="[required]"
-                :readonly="loading"
-            ></v-text-field>
-            <v-textarea
-                v-model="formData.help_needed"
-                name="help_needed"
-                label="Какая помощь Вам необходима?"
-                hint="Опишите свою проблему в свободной форме"
-                minlength="5"
-                maxlength="1000"
-                counter
-                :rules="[required]"
-                :readonly="loading"
-            ></v-textarea>
-            <v-btn @click="onSubmit" type="submit" class="support_btn text-white">Отправить</v-btn>
-          </v-form>
+<!--          <v-form ref="form" class="mt-5" v-model="form" @submit.prevent="onSubmit">-->
+<!--            <v-text-field-->
+<!--                v-model="formData.name"-->
+<!--                name="name"-->
+<!--                label="Ф.И.О."-->
+<!--                :rules="[required]"-->
+<!--                :readonly="loading"-->
+<!--                clearable-->
+<!--                maxlength="30"-->
+<!--                counter-->
+<!--            ></v-text-field>-->
+<!--            <p>Ваш статус для подопечного:</p>-->
+<!--            <v-radio-group v-model="formData.status" :rules="[required]" :readonly="loading" name="status">-->
+<!--              <v-radio label="Я сам" color="primary" value="self"></v-radio>-->
+<!--              <v-radio label="Родитель" color="primary" value="parent"></v-radio>-->
+<!--              <v-radio label="Опекун" color="primary" value="guardian"></v-radio>-->
+<!--              <v-radio label="Родственник" color="primary" value="relative"></v-radio>-->
+<!--              <v-radio label="Другой вариант" color="primary" value="another"></v-radio>-->
+<!--            </v-radio-group>-->
+<!--            <v-text-field-->
+<!--                v-model="formData.ward_name"-->
+<!--                name="ward_name"-->
+<!--                label="ФИО подопечного:"-->
+<!--                :rules="[required]"-->
+<!--                :readonly="loading"-->
+<!--                clearable-->
+<!--                maxlength="30"-->
+<!--                counter-->
+<!--            ></v-text-field>-->
+<!--            <v-text-field-->
+<!--                v-model="formData.ward_birthdate"-->
+<!--                name="ward_birthdate"-->
+<!--                label="Дата рождения подопечного:"-->
+<!--                :rules="[required]"-->
+<!--                :readonly="loading"-->
+<!--                clearable-->
+<!--                maxlength="10"-->
+<!--                counter-->
+<!--                hint="дд.мм.гггг"-->
+<!--            ></v-text-field>-->
+<!--            <v-text-field-->
+<!--                v-model="formData.email"-->
+<!--                name="email"-->
+<!--                label="E-mail:"-->
+<!--                type="email"-->
+<!--                :rules="[required]"-->
+<!--                hint="example@email.com"-->
+<!--                maxlength="30"-->
+<!--                counter-->
+<!--            ></v-text-field>-->
+<!--            <v-text-field-->
+<!--                v-model="formData.phone"-->
+<!--                name="phone"-->
+<!--                label="Ваш номер телефона:"-->
+<!--                :rules="[required]"-->
+<!--                :readonly="loading"-->
+<!--                clearable-->
+<!--                maxlength="12"-->
+<!--                counter-->
+<!--                hint="В формате: +79991234567"-->
+<!--            ></v-text-field>-->
+<!--            <v-text-field-->
+<!--                v-model="formData.city"-->
+<!--                name="city"-->
+<!--                label="Ваш город:"-->
+<!--                :rules="[required]"-->
+<!--                :readonly="loading"-->
+<!--            ></v-text-field>-->
+<!--            <v-textarea-->
+<!--                v-model="formData.help_needed"-->
+<!--                name="help_needed"-->
+<!--                label="Какая помощь Вам необходима?"-->
+<!--                hint="Опишите свою проблему в свободной форме"-->
+<!--                minlength="5"-->
+<!--                maxlength="1000"-->
+<!--                counter-->
+<!--                :rules="[required]"-->
+<!--                :readonly="loading"-->
+<!--            ></v-textarea>-->
+<!--            <v-btn @click="onSubmit" type="submit" class="support_btn text-white">Отправить</v-btn>-->
+<!--          </v-form>-->
+          <p>В настоящее время анкета находится в разработке. Звоните нам по телефону +7-923-003-38-74 или пишите на электронную почту anootvet2025@gmail.com</p>
         </v-col>
       </v-row>
     </v-container>
