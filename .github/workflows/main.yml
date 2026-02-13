@@ -20,7 +20,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
           source: ./dist/**
-          target: /var/www/ano_otvet_ru_usr/data/www/ano-otvet.ru
+          target: /var/www/ano_otvet_ru_usr43/data/www/ano-otvet.ru
           strip_components: 1  # Удаляет один уровень каталога (папку dist)
 
       - name: Restart Remote Service
